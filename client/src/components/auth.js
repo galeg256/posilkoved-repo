@@ -126,7 +126,7 @@ export default class Auth extends React.Component {
         )
         break
       }
-      default : {}
+      default : break
     }
     
     return data
@@ -159,29 +159,3 @@ export default class Auth extends React.Component {
     )
   }
 }
-
-
-{/* <div className='auth__links'>
-              <a className='link__register' href='/'>
-                Регистрация
-              </a>
-              <a className='link__recovery' href='/'>
-                Забыли пароль?
-              </a>
-            </div> */}
-
-
-{/* <div className='auth__container'>
-            <h1 className='auth__title'>Вход</h1>
-            <div className='auth__login'>
-              <input className='login__input' type='email' placeholder='Адрес электронной почты'/>
-            </div>
-            <div className='auth__password'>
-              <input className='password__input' type='password' placeholder='Пароль'/>
-            </div>
-            <div className='auth__actions'>
-              <a className='actions__register' href='/'>Регистрация</a>
-              <a className='actions__recovery'href='/'>Забыли пароль?</a>
-              <button className='actions__btn-enter'>Войти</button>
-            </div>
-          </div> */}

@@ -25,6 +25,11 @@
   color: #5B5B5B;
 }
 
+html { 
+  /* overflow: hidden; */
+  /* overflow: scroll; */
+}
+
 /* Header start */
 
 .header {  /*шрифтов пока нет */
@@ -223,9 +228,9 @@
 
 /* Footer end  */
 
-/* Auth styles start */
+/* Login styles start */
 
-.auth {
+.auth, .register, .recovery {
   display: flex;
   position: fixed;
   background-color: rgba(0,0,0,0.7);
@@ -236,23 +241,30 @@
   justify-content: center;
   align-items: center;
   z-index: 10;
-
   /* font-size: 26px;
   font-weight: 700; */
 }
 
-.auth__container {
+.auth__container, .register__container, .recovery__container {
+  position: relative;
   width: 400px;
   /* height: 430px; */
   background-color: #fff;
   border-radius: 10px;
 }
 
-.auth__wrap {  
+.auth__container .closer, .register__container .closer, .recovery__container .closer {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+
+.auth__wrap, .register__wrap, .recovery__wrap {  
   padding: 0 30px;
 }
 
-.auth__title {
+.auth__title, .register__title, .recovery__title {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -266,13 +278,14 @@
   color: #fff;
 }
 
-.auth__login, .auth__password {
+.auth__login, .auth__password, .register__login, .register__password, 
+.register__repeat-password, .recovery__login {
   position: relative;
 
   margin-bottom: 40px;
 }
 
-.login__input, .password__input {
+.login__input, .password__input, .repeat-password__input{
   height: 40px;
   width: calc(100% - 4px - 50px);
   padding: 5px 15px 5px 35px;
@@ -280,7 +293,8 @@
   border-bottom: 1px solid rgba(51,51,51,0.5);
 }
 
-.auth__login::before {
+.auth__login::before, .register__login::before,
+.recovery__login::before {
   position: absolute;
   content: "";
   top: 12px;
@@ -291,7 +305,7 @@
   background-size: 32px 32px;
 }
 
-.auth__password::before {
+.auth__password::before, .register__password::before, .register__repeat-password::before{
   position: absolute;
   content: "";
   top: 13px;
@@ -302,11 +316,11 @@
   background-size: 32px 32px;
 }
 
-.login__input::placeholder, .password__input::placeholder {
+.login__input::placeholder, .password__input::placeholder, .repeat-password__input::placeholder {
   color: rgba(51,51,51,0.5);
 }
 
-.auth__btn-auth {
+.auth__btn-auth, .register__btn-register, .recovery__btn-recovery {
   width: 100%;
   height: 45px;
   margin-bottom: 40px;
@@ -316,17 +330,26 @@
   color: #fff;
 }
 
-.auth__btn-auth:hover, .auth__btn-auth:focus {
+.auth__btn-auth:hover, .auth__btn-auth:focus,
+.register__btn-register:hover, .register__btn-register:focus,
+.recovery__btn-recovery:hover, .recovery__btn-recovery:focus {
   opacity: 0.85;
 }
 
-.auth__btn-auth:active {
+.auth__btn-auth:active, .register__btn-register:active,
+.recovery__btn-recovery {
   /* opacity: 1; */
 }
 
-.auth__links {
+.auth__links, .recovery__links {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 35px;
+}
+
+.register__links {
+  display: flex;
+  justify-content: center;
   margin-bottom: 35px;
 }
 
@@ -334,4 +357,4 @@
   color: rgba(51,51,51,0.6);
   font-size: 18px;
 }
-/* Auth styles end */
+/* Login styles end */

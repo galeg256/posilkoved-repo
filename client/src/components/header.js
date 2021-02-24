@@ -2,6 +2,16 @@ import React from 'react'
 import headerLogo from '../img/logo.png'
 
 export default class Header extends React.Component {
+  constructor() {
+    super()
+    this.handlerLogin = this.handlerLogin.bind(this)
+  }
+
+  handlerLogin(evt) {
+    evt.preventDefault()
+    this.props.setFormType(evt.target.getAttribute('data-type'))
+  }
+
   render() {
     return (
     <header className='header'>
@@ -32,9 +42,9 @@ export default class Header extends React.Component {
         </div>
 
         <div className='login'>
-          <a className='login__enter lg-style' href='/'>Вход</a>
+          <a className='login__enter lg-style' href='/' onClick={this.handlerLogin} data-type='auth'>Вход</a>
           <span> / </span>
-          <a className='login__reg lg-style' href='/'>Регистрация</a>
+          <a className='login__reg lg-style' href='/' onClick={this.handlerLogin} data-type='register'>Регистрация</a>
         </div>
 
       </div>
