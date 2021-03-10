@@ -7,6 +7,11 @@ export default class RegisterForm extends React.Component {
       login: '',
       password: '',
       repPassword: '',
+      errors: {
+        // login: '',
+        // password: '',
+        // repPassword: '',
+      },
     }
 
     this.handlerLink = this.handlerLink.bind(this)
@@ -44,17 +49,29 @@ export default class RegisterForm extends React.Component {
       if (res.ok) {
         console.log('Okay')
         localStorage.setItem('token', result.result)
+        this.props.setFormType()
       } else {
-        console.log(result.msg)
-        //Распарсить errors (ошибки под поля)
-        // console.log(result.errors)
+        let ers = {}
+        if (res.status === 412) {
+          result.errors.forEach( err => {
+            if (err.param === 'login') ers.login = err.msg
+            if (err.param === 'password') ers.password = err.msg
+          })
+          this.setState({errors: ers})
+        } else {
+          ers.other = result.msg
+          this.setState({errors: ers})
+        }
       }
     }
 
-    fetchRegister()
+    if (state.password === state.repPassword) fetchRegister.call(this)
+    else this.setState({errors: {repPassword: 'Пароли не совпадают'}})
   }
 
   render() {
+    const state = this.state
+
     return (
       <div className='register'>
         <div className='register__container'>
@@ -64,16 +81,20 @@ export default class RegisterForm extends React.Component {
           <div className='register__wrap'>
             <div className='register__login'>
               <input className='login__input' type='email' placeholder='Адрес эл.почты' onChange={this.handlerChangeText}/>
+              <div className='login__err'>{state.errors.login}</div>
             </div>
             <div className='register__password'>
               <input className='password__input' type='password' placeholder='Пароль' onChange={this.handlerChangeText}/>
+              <div className='password__err'>{state.errors.password}</div>
             </div>
             <div className='register__repeat-password'>
               <input className='repeat-password__input' type='password' placeholder='Повторите пароль' onChange={this.handlerChangeText}/>
+              <div className='repeat-password__err'>{state.errors.repPassword}</div>
             </div>
             <button className='register__btn-register' onClick={this.handlerRegister}>
                 Зарегистрироваться
             </button>
+            <div className='other__err'>{state.errors.other}</div>
             <div className='register__links'>
               <a className='link__login' href='/'onClick={this.handlerLink} data-type='auth'>
                 У меня уже есть аккаунт!

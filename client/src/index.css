@@ -282,7 +282,19 @@ html {
 .register__repeat-password, .recovery__login {
   position: relative;
 
-  margin-bottom: 40px;
+  margin-bottom: 10px;
+}
+
+.login__err, .password__err, .repeat-password__err, .other__err {
+  height: 20px;
+  color: red;
+  font-size: 18px;
+}
+
+.other__err {
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 15px;
 }
 
 .login__input, .password__input, .repeat-password__input{
@@ -323,7 +335,7 @@ html {
 .auth__btn-auth, .register__btn-register, .recovery__btn-recovery {
   width: 100%;
   height: 45px;
-  margin-bottom: 40px;
+  /* margin-bottom: 40px; */
   border: 0;
   border-radius: 8px;
   background-color: #00A0E3;

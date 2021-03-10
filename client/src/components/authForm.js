@@ -6,6 +6,7 @@ export default class AuthForm extends React.Component {
     this.state={
       login: '',
       password: '',
+      errors: {}
     }
 
     this.handlerLink = this.handlerLink.bind(this)
@@ -39,19 +40,40 @@ export default class AuthForm extends React.Component {
       })
       const result = await res.json()
       if (res.ok) {
-        console.log('Okay')
         localStorage.setItem('token', result.result)
+        this.props.setFormType()
+        console.log('Выполнен вход!')
       } else {
-        console.log(result.msg)
-        //Распарсить errors (ошибки под поля)
-        // console.log(result.errors)
+        let ers = {}
+        if (res.status === 412) {
+          result.errors.forEach( err => {
+            if (err.param === 'login') ers.login = err.msg
+            if (err.param === 'password') ers.password = err.msg
+          })
+          this.setState({errors: ers})
+        } else {
+          ers.other = result.msg
+          this.setState({errors: ers})
+        }
       }
     }
 
-    fetchLogin()
+    fetchLogin.call(this)
+
+    // fetchLogin().then(resp => {
+    //   if (resp) console.log('Выполнен вход!')
+    //   else this.setState({errors: ers})
+    // })
+
+    // const fetchRes = fetchLogin()
+    // console.log(fetchRes)
+    // if (fetchRes) console.log('Выполнен вход!')
+    // else this.setState({errors: ers})
   }
 
   render() {
+    const state = this.state
+
     return (
       <div className='auth'>
         <div className='auth__container'>
@@ -61,13 +83,16 @@ export default class AuthForm extends React.Component {
           <div className='auth__wrap'>
             <div className='auth__login'>
               <input className='login__input' type='email' placeholder='Адрес эл.почты' onChange={this.handlerChangeText}/>
+              <div className='login__err'>{state.errors.login}</div>
             </div>
             <div className='auth__password'>
               <input className='password__input' type='password' placeholder='Пароль' onChange={this.handlerChangeText}/>
+              <div className='password__err'>{state.errors.password}</div>
             </div>
             <button className='auth__btn-auth' onClick={this.handlerLogin}>
                 Войти
             </button>
+            <div className='other__err'>{state.errors.other}</div>
             <div className='auth__links'>
               <a className='link__recovery' href='/' onClick={this.handlerLink} data-type='recovery'>
                 Забыли пароль?
