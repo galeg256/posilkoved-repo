@@ -369,4 +369,162 @@ html {
   color: rgba(51,51,51,0.6);
   font-size: 18px;
 }
+
 /* Login styles end */
+
+/* Forms styles start */
+
+.forms {
+  font-size: 18px;
+  background-color: rgb(247, 247, 247);
+  color: black;
+}
+
+.forms__wrap {
+  width: 600px;
+  margin: 0 auto;
+}
+
+.span-sm {
+  /* display: inline-flex; */
+  margin-right: auto;
+  width: 240px;
+  height: 24px;
+}
+
+.span-lg {
+  /* display: inline-flex; */
+  margin-right: auto;
+  width: 240px;
+  height: 60px;
+}
+
+.select-sm, .select-lg {
+  height: 24px;
+}
+
+.select-sm {
+  width: 120px;
+}
+
+.select-lg {
+  width: 265px;
+}
+
+.container-sm {
+  display: flex;
+  padding: 10px 24px 10px 24px;
+}
+
+.container-lg {
+  padding: 15px 0;
+}
+
+.container-wrap {
+  /* display: flex;
+  justify-content: space-between; */
+  border: 1px solid #BEBEBE;
+  /* padding: 15px 24px 15px 24px; */
+  /* padding: 24px; */
+}
+
+.forms-ta {
+  width: 259px;
+  height: 54px;
+  resize: none;
+}
+
+.annotation {
+  display: block;
+  color: #919191;
+  font-size: 14px;
+}
+
+.input-sm, .input-sm-frst, .input-sm-one{
+  /* display: inline-block; */
+  width: 116px;
+  height: 18px;
+}
+
+.input-sm-frst {
+  margin-right: 25px;
+}
+
+.input-sm-one {
+  margin-right: 145px;
+}
+
+.input-container {
+  display: inline-block;
+  /* vertical-align: top; */
+  position: relative;
+}
+
+.input-container:after {
+  display: block;
+  content: 'Кг';
+  position: absolute;
+  top: 3px;
+  left: 125px;
+  width: 20px;
+  height: 18px;
+  color: #949494;
+
+  pointer-events: none;
+}
+
+.input-lg {
+  display: inline-block;
+  height: 18px;
+  width: 261px;
+}
+
+.container-title {
+  margin-bottom: 10px;
+  padding: 0 24px;
+}
+
+.forms__post {
+  padding-top: 45px;  
+  margin-top: 0;
+}
+
+.add-product__btn-add {
+  border: 0;
+  background-color: rgb(247, 247, 247);
+  font-size: 14px;
+  color: #00A0E3;
+}
+
+.add-product__btn-add:hover, .add-product__btn-add:focus {
+  opacity: .7;
+}
+
+.more-info__btn-add {
+  margin-left: auto;
+  font-size: 14px;
+  border: 0;
+  background-color: rgb(247, 247, 247);
+  color: #00A0E3;
+  width: 265px;
+}
+
+.more-info__btn-add:hover, .more-info__btn-add:focus {
+  opacity: .7;
+}
+
+.forms__save {
+  display: flex;
+  justify-content: center;
+  padding: 15px 0 40px 0;
+}
+
+.save__btn-save {
+  border-color: #00A0E3;
+  background-color: #00A0E3;
+  border-radius: 6px;
+  width: 250px;
+  height: 40px;
+}
+
+/* Forms styles end */
