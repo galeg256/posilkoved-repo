@@ -1,6 +1,21 @@
 import React from 'react'
 
 export default class Content extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.handlerSelectForm = this.handlerSelectForm.bind(this)
+  }
+
+
+  handlerSelectForm(evt) {
+    evt.preventDefault()
+
+    //Проверка авторизации пользователя
+    if (localStorage.length) this.props.setOrderType(this.props.sum)
+    else this.props.setFormType('auth')
+  }
+
   render() {
     return (
       <div className='content__wrap'>
@@ -14,9 +29,11 @@ export default class Content extends React.Component {
             Посылка до <b>{this.props.sum}</b> 
             <span> &euro;</span>
           </h3>
-          <a className='content__link' href='/'>Начать оформление</a>
+          <a className='content__link' href='/' onClick={this.handlerSelectForm}>
+            Начать оформление
+          </a>
         </div>
-
+      
       </div>
     )
   }

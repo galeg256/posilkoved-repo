@@ -4,7 +4,12 @@ import headerLogo from '../img/logo.png'
 export default class Header extends React.Component {
   constructor() {
     super()
+    this.state = {
+
+    }
+
     this.handlerLogin = this.handlerLogin.bind(this)
+    this.handlerExit = this.handlerExit.bind(this)
   }
 
   handlerLogin(evt) {
@@ -12,7 +17,44 @@ export default class Header extends React.Component {
     this.props.setFormType(evt.target.getAttribute('data-type'))
   }
 
+  handlerAccount(evt) {
+    evt.preventDefault()
+    return
+  }
+
+  handlerExit(evt) {
+    evt.preventDefault()
+    localStorage.removeItem('token')
+    this.props.delLogin()
+    this.props.setMainType('home')
+  }
+
   render() {
+
+    const logRegBtns = (
+      <div className='login'>
+        <a className='login__enter lg-style' href='/' onClick={this.handlerLogin} data-type='auth'>
+          Вход
+        </a>
+        <span> / </span>
+        <a className='login__reg lg-style' href='/' onClick={this.handlerLogin} data-type='register'>
+          Регистрация
+        </a>
+      </div>
+    )
+
+    const accExitBtns = (
+      <div className='login'>
+        <a className='login__account lg-style' href='/' onClick={this.handlerAccount} data-type='auth'>
+          {this.props.login}
+        </a>
+        <span> / </span>
+        <a className='login-exit lg-style' href='/' onClick={this.handlerExit} data-type='register'>
+          Выход
+        </a>
+      </div>
+    )
+
     return (
     <header className='header'>
 
@@ -40,12 +82,7 @@ export default class Header extends React.Component {
             </li>
           </ul>
         </div>
-
-        <div className='login'>
-          <a className='login__enter lg-style' href='/' onClick={this.handlerLogin} data-type='auth'>Вход</a>
-          <span> / </span>
-          <a className='login__reg lg-style' href='/' onClick={this.handlerLogin} data-type='register'>Регистрация</a>
-        </div>
+        {localStorage.length ? accExitBtns : logRegBtns}
 
       </div>
     </header>

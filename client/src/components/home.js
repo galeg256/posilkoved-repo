@@ -7,6 +7,7 @@ import before200 from '../img/before200.png'
 import before1000 from '../img/before1000.png'
 
 export default class Home extends React.Component {
+
   render() {
     return (   
       <div className='home'>
@@ -33,11 +34,11 @@ export default class Home extends React.Component {
         </section>
 
         <section className='before200' style={{backgroundColor: '#12b9e3'}}>
-          <Content pic={before200} sum='200'/>
+          <Content pic={before200} sum='200' setOrderType={this.props.setOrderType} setFormType={this.props.setFormType}/>
         </section>
         
         <section className='before1000' style={{backgroundColor: '#ee7ea3'}}>
-          <Content pic={before1000} sum='1000'/>
+          <Content pic={before1000} sum='1000' setOrderType={this.props.setOrderType} setFormType={this.props.setFormType}/>
         </section>
       </div>
     )

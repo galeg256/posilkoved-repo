@@ -380,6 +380,16 @@ html {
   color: black;
 }
 
+.forms__top {
+  height: 70px;
+  background-color: #FCC306;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  padding-left: 10%;
+  font-weight: bold;
+}
+
 .forms__wrap {
   width: 600px;
   margin: 0 auto;

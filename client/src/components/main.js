@@ -3,11 +3,16 @@ import Home from './home.js'
 import Forms from './forms.js'
 
 export default class Main extends React.Component {
+
   render() {
-    const aaa = 0
+    // console.log(this.props.orderType)
+
+
+    const main = this.props.mainType === 'home' ? <Home setOrderType={this.props.setOrderType} setFormType={this.props.setFormType} /> 
+      : this.props.mainType === 'forms' ? <Forms orderType={this.props.orderType}/> : null
 
     return <main className='main'>
-      {aaa > 0 ? <Home /> : <Forms />}
+      {main}
     </main>
   }
 }

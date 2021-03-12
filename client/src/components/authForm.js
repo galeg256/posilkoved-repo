@@ -41,7 +41,10 @@ export default class AuthForm extends React.Component {
       const result = await res.json()
       if (res.ok) {
         localStorage.setItem('token', result.result)
+        
+        this.props.getLogin(state.login)
         this.props.setFormType()
+
         console.log('Выполнен вход!')
       } else {
         let ers = {}
@@ -59,16 +62,6 @@ export default class AuthForm extends React.Component {
     }
 
     fetchLogin.call(this)
-
-    // fetchLogin().then(resp => {
-    //   if (resp) console.log('Выполнен вход!')
-    //   else this.setState({errors: ers})
-    // })
-
-    // const fetchRes = fetchLogin()
-    // console.log(fetchRes)
-    // if (fetchRes) console.log('Выполнен вход!')
-    // else this.setState({errors: ers})
   }
 
   render() {

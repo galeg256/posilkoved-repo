@@ -49,6 +49,7 @@ export default class RegisterForm extends React.Component {
       if (res.ok) {
         console.log('Okay')
         localStorage.setItem('token', result.result)
+        this.props.getLogin(state.login)
         this.props.setFormType()
       } else {
         let ers = {}

@@ -1,9 +1,40 @@
 import React from 'react'
 
 export default class Forms extends React.Component {
+
   render() {
+    const advancedFields = this.props.orderType === '1000' ? 
+      <div>
+        <div className='container-sm'>
+          <span className='span-lg'>
+            Код по ТН ВЭД
+            <br />
+            <span className='annotation'>
+              выбрать код
+            </span>
+          </span>
+          <textarea className='forms-ta' />
+        </div>
+
+        <div className='container-sm'>
+          <span className='span-lg'>
+            Ставка таможженной пошлины
+            <br />
+            <span className='annotation'>
+              без знака %
+            </span>
+          </span>
+          <textarea className='forms-ta' />
+        </div>
+      </div>
+      : null 
+
+
     return (
       <div className='forms'>
+        <div className='forms__top'>
+          Заказ до {this.props.orderType} €
+        </div>
         <div className='forms__wrap'>
 
           <div className='forms__post container-sm'>
@@ -151,11 +182,14 @@ export default class Forms extends React.Component {
           </div>
 
           <div className='forms__product-info container-lg'>
+            
             <div className='container-title'>
               Сведения о товаре 1
             </div>
 
             <div className='container-wrap'>
+
+              {advancedFields}
 
               <div className='container-sm'>
                 <span className='span-sm'>
