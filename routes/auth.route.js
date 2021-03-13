@@ -1,11 +1,13 @@
 import Router from 'express'
-import {login, register, getUsers} from '../controllers/auth.controller.js'
+import {login, register, getLogin} from '../controllers/auth.controller.js'
 import {check} from 'express-validator'
 import passport from 'passport'
 
 const router = Router()
 
-router.get('/', passport.authenticate('jwt', {session: false}), getUsers) //test DB
+router.get('/', passport.authenticate('jwt', {session: false}), getLogin) //test DB
+
+// router.get('/', getLogin) //test DB
 
 router.post('/login', [
     check('login','Некорректный e-mail').isEmail(),
