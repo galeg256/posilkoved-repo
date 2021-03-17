@@ -1,8 +1,19 @@
 import React from 'react'
 
 export default class Forms extends React.Component {
+  // constructor() {
+  //   super()
+  //   this.state = {
+
+  //   }
+
+  // }
 
   render() {
+    //поднять скролл вверх
+    //window.scroll(0, 0) //Здесь ли он должен стоять? //нет
+    // console.log(window.scrollY)
+
     const advancedFields = this.props.orderType === '1000' ? 
       <div>
         <div className='container-sm'>
@@ -70,7 +81,7 @@ export default class Forms extends React.Component {
                 <span className='span-sm'>
                   Серия и номер
                 </span>
-                <input className='input-sm-frst'/>
+                <input className='input-sm-frst' />
                 <input className='input-sm'/>
               </div>
 

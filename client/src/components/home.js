@@ -34,11 +34,22 @@ export default class Home extends React.Component {
         </section>
 
         <section className='before200' style={{backgroundColor: '#12b9e3'}}>
-          <Content pic={before200} sum='200' setOrderType={this.props.setOrderType} setFormType={this.props.setFormType}/>
+          <Content 
+            pic={before200} 
+            sum='200' 
+            setOrderType={this.props.setOrderType} 
+            setFormType={this.props.setFormType} 
+            setDesiredOrder={this.props.setDesiredOrder}
+          />
         </section>
         
         <section className='before1000' style={{backgroundColor: '#ee7ea3'}}>
-          <Content pic={before1000} sum='1000' setOrderType={this.props.setOrderType} setFormType={this.props.setFormType}/>
+          <Content pic={before1000} 
+            sum='1000' 
+            setOrderType={this.props.setOrderType} 
+            setFormType={this.props.setFormType} 
+            setDesiredOrder={this.props.setDesiredOrder}
+          />
         </section>
       </div>
     )

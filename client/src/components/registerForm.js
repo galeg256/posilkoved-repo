@@ -35,6 +35,7 @@ export default class RegisterForm extends React.Component {
 
   handlerClose() {
     this.props.setFormType()
+    this.props.setDesiredOrder()
   }
 
   handlerRegister() {
@@ -49,8 +50,15 @@ export default class RegisterForm extends React.Component {
       if (res.ok) {
         console.log('Okay')
         localStorage.setItem('token', result.result)
+
         this.props.getLogin(state.login)
         this.props.setFormType()
+
+        if (this.props.desiredOrder) {
+          this.props.setOrderType(this.props.desiredOrder)
+          this.props.setDesiredOrder()
+        }
+
       } else {
         let ers = {}
         if (res.status === 412) {

@@ -10,13 +10,14 @@ export default class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      formType: '',
-      mainType: 'home', //home
-      orderType: '200', //200
+      formType: '', //register, auth, recovery
+      mainType: 'home', //home, forms
+      orderType: '', //200, 1000
       login: '',
       // formType: 'auth',
       // formType: 'register',
       // formType: 'recovery',
+      desiredOrder: ''
     }
 
     this.setFormType = this.setFormType.bind(this)
@@ -24,6 +25,7 @@ export default class App extends React.Component {
     this.fetchGetLogin = this.fetchGetLogin.bind(this)
     this.delLogin = this.delLogin.bind(this)
     this.setOrderType = this.setOrderType.bind(this)
+    this.setDesiredOrder = this.setDesiredOrder.bind(this)
   }
 
   componentDidMount() {
@@ -61,9 +63,17 @@ export default class App extends React.Component {
     this.setState({login: ''})
   }
 
-  setOrderType(type) {
-    console.log(type)
-    if (!localStorage.length) return
+  setOrderType(type = '') {
+
+    if (!localStorage.length) {
+      this.setState({orderType: ''})
+      return 
+    }
+
+    //При вызове любой формы обнуляем значение Scroll
+    window.scroll(0, 0)
+    ////////
+
     if (type === '200') {
       this.setState({
         orderType: '200',
@@ -77,16 +87,40 @@ export default class App extends React.Component {
     }
   }
 
+  setDesiredOrder(order = '') {
+    this.setState({desiredOrder: order})
+  }
+
   render() {
+    let selectedPage
+    if (this.state.mainType === 'home') selectedPage = 'home'
+    else if (this.state.orderType === '200') selectedPage = 'form200'
+    else if (this.state.orderType === '1000') selectedPage = 'form1000'
+    else if (this.state.mainType ==='account') selectedPage = 'account'
+
     //говнокод
     let form
     document.querySelector('html').style.overflow = 'hidden' 
     switch (this.state.formType) {
       case 'auth':
-        form = <AuthForm setFormType={this.setFormType} getLogin={this.fetchGetLogin} />
+        form = <AuthForm 
+          setFormType={this.setFormType} 
+          getLogin={this.fetchGetLogin}
+
+          setOrderType={this.setOrderType} 
+          setDesiredOrder={this.setDesiredOrder}
+          desiredOrder={this.state.desiredOrder}
+        />
         break
       case 'register': 
-        form = <RegisterForm setFormType={this.setFormType} getLogin={this.fetchGetLogin}/>
+        form = <RegisterForm 
+          setFormType={this.setFormType} 
+          getLogin={this.fetchGetLogin}
+
+          setOrderType={this.setOrderType} 
+          setDesiredOrder={this.setDesiredOrder}
+          desiredOrder={this.state.desiredOrder}
+        />
         break
       case 'recovery':
         form = <RecoveryForm setFormType={this.setFormType} />
@@ -104,12 +138,16 @@ export default class App extends React.Component {
           setMainType={this.setMainType}
           delLogin={this.delLogin}
           login={this.state.login}
+          setOrderType={this.setOrderType}
+          setDesiredOrder={this.setDesiredOrder}
+          selectedPage={selectedPage}
         />
         <Main 
           mainType={this.state.mainType} 
           setOrderType={this.setOrderType}
           orderType={this.state.orderType}
           setFormType={this.setFormType} 
+          setDesiredOrder={this.setDesiredOrder}
         />
         <Footer />
         {form}

@@ -28,6 +28,7 @@ export default class AuthForm extends React.Component {
 
   handlerClose() {
     this.props.setFormType()
+    this.props.setDesiredOrder()
   }
 
   handlerLogin() {
@@ -44,6 +45,11 @@ export default class AuthForm extends React.Component {
         
         this.props.getLogin(state.login)
         this.props.setFormType()
+
+        if (this.props.desiredOrder) {
+          this.props.setOrderType(this.props.desiredOrder)
+          this.props.setDesiredOrder()
+        }
 
         console.log('Выполнен вход!')
       } else {

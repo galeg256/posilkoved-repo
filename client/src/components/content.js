@@ -13,7 +13,10 @@ export default class Content extends React.Component {
 
     //Проверка авторизации пользователя
     if (localStorage.length) this.props.setOrderType(this.props.sum)
-    else this.props.setFormType('auth')
+    else {
+      this.props.setDesiredOrder(this.props.sum)
+      this.props.setFormType('auth')
+    }
   }
 
   render() {

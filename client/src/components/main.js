@@ -5,10 +5,13 @@ import Forms from './forms.js'
 export default class Main extends React.Component {
 
   render() {
-    // console.log(this.props.orderType)
 
-
-    const main = this.props.mainType === 'home' ? <Home setOrderType={this.props.setOrderType} setFormType={this.props.setFormType} /> 
+    const main = this.props.mainType === 'home' 
+      ? <Home 
+          setOrderType={this.props.setOrderType} 
+          setFormType={this.props.setFormType} 
+          setDesiredOrder={this.props.setDesiredOrder}
+        /> 
       : this.props.mainType === 'forms' ? <Forms orderType={this.props.orderType}/> : null
 
     return <main className='main'>
