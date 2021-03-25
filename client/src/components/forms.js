@@ -1,4 +1,5 @@
 import React from 'react'
+import {saveAs} from 'file-saver'
 
 export default class Forms extends React.Component {
   constructor() {
@@ -130,7 +131,42 @@ export default class Forms extends React.Component {
   }
 
   saveDocument() {
-    console.log(this.state)
+    //console.log(this.state)
+    const state = this.state
+    async function fetchCreatePDF() {
+      const res = await fetch('/api/order/create-doc', {
+        method: 'post',
+        headers: {'Content-Type': 'application/json', 'Authorization': localStorage.getItem('token')},
+        body: JSON.stringify({"data": state, "type": this.props.orderType})
+      })
+      const result = await res.json()
+      if (res.ok) {
+        const doc = await fetch('/api/order/get-doc', {
+          method: 'get',
+          headers: {'Content-Type': 'application/pdf', 'Authorization': localStorage.getItem('token')}
+        })
+
+        const document = await doc.blob()
+
+        const pdfBlob = new Blob([document], {type: 'application/pdf'})
+        saveAs(pdfBlob, 'newPdf.pdf')
+
+      } else {
+        let ers = {}
+        if (res.status === 412) {
+          result.errors.forEach( err => {
+            if (err.param === 'login') ers.login = err.msg
+            if (err.param === 'password') ers.password = err.msg
+          })
+          this.setState({errors: ers})
+        } else {
+          ers.other = result.msg
+          this.setState({errors: ers})
+        }
+      }
+    }
+
+    fetchCreatePDF.call(this)
   }
 
   render() {

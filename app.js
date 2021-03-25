@@ -3,6 +3,7 @@ import cors from 'cors'
 import bodyParser from 'body-parser'
 import {PORT} from './config/config.js'
 import authRoute from './routes/auth.route.js'
+import orderRoute from './routes/order.route.js'
 import db from './config/DBconnection.js'
 import passport from 'passport'
 import pass from './middleware/passport.js'
@@ -22,6 +23,7 @@ app.use(passport.initialize())
 pass(passport)
 
 app.use('/api/auth', authRoute)
+app.use('/api/order', orderRoute)
 
 app.listen(PORT, () => {
     console.log('Сервер запущен')
