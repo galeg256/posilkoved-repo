@@ -92,6 +92,7 @@ export default class App extends React.Component {
   }
 
   render() {
+
     let selectedPage
     if (this.state.mainType === 'home') selectedPage = 'home'
     else if (this.state.orderType === '200') selectedPage = 'form200'
