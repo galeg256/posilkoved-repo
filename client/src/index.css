@@ -499,6 +499,12 @@ html {
   width: 261px;
 }
 
+.input-select {
+  width: 536px;
+  margin: 0 20px;
+  padding: 1px 8px;
+}
+
 .container-title {
   margin-bottom: 10px;
   padding: 0 24px;
@@ -545,6 +551,56 @@ html {
   border-radius: 6px;
   width: 250px;
   height: 40px;
+}
+
+/* trash start =) */
+
+.forms__address, .forms__post {
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.forms__address {
+  padding-top: 15px;
+}
+
+.address-list {
+  position: absolute;
+  /* border: 1px solid #bebebe; */
+  /* height: auto; */
+  background-color: #fff;
+  width: 554px;
+  left: 20px;
+  top: 70px;
+  /* overflow: visible; */
+}
+
+.post-list {
+  position: absolute;
+  background-color: #fff;
+  width: 554px;
+  left: 20px;
+  top: 99px;
+}
+
+.al-fill, .pl-fill {
+  border-left: 1px solid #bebebe;
+  border-right: 1px solid #bebebe;
+  border-bottom: 1px solid #bebebe;
+}
+
+.al-empty, .pl-empty {
+  border: 0;
+}
+
+.address-item, .post-item {
+  padding: 4px 8px;
+  cursor: pointer;
+  /* background-color: aqua; */
+}
+
+.address-item:hover, .address-item:focus, .post-item:hover, .post-item:focus {
+  background-color: #eee;
 }
 
 /* Forms styles end */

@@ -1,44 +1,52 @@
 import React from 'react'
 import {saveAs} from 'file-saver'
 
+var timerIdAddress
+var timerIdPost
+
 export default class Forms extends React.Component {
   constructor() {
     super()
     this.state = {
-      post: '',
-      declarant: '',
-      passportSeries: '',
-      passportNumber: '',
-      passportGiveDate: '',
-      passportWhoGive: '',
-      addressIndex: '',
-      addressRegion: '',
-      addressLocation: '',
-      firmName: '',
-      firmCountry: '',
-      firmAddress: '',
-      transCost: '',
-      productInfo: [
+      post: '', 
+      postList: [], 
+      isPostChoosen: false,
+      postFull: '', //data
+      declarant: '', //data
+      passportSeries: '', //data
+      passportNumber: '', //data
+      passportGiveDate: '', //data
+      passportWhoGive: '', //data
+      address: '', 
+      addressList: [], 
+      isAddressChoosen: false, 
+      addressFull: '', //data
+      firmName: '', //data
+      firmCountry: '', //data
+      firmAddress: '', //data
+      transCost: '', //data
+      transCostVal: 'none',
+      productInfo: [ //data
         {
           codeTNVD: '',
           stakeTP: '',
           productName: '',
           productTarget: '',
           productDescription: '',
-          сount: '',
+          countUM: '',
           spaceCount: '',
           countKg: '',
           invoiceCost: '',
-          invoiceCostSELECT: '',
+          invoiceCostVal: 'none',
           grossWeight: '',
           netWeight: ''
         }
       ],
-      consigmentNumber: '',
-      notifyNumber: '',
-      openAct: '',
-      invoiceCount: '',
-      additionalDoc: [
+      consigmentNumber: '', //data
+      notifyNumber: '', //data
+      openAct: '', //data
+      invoiceCount: '', //data
+      additionalDoc: [ //data
         {
           document: ''
         }
@@ -49,6 +57,10 @@ export default class Forms extends React.Component {
     this.addProduct = this.addProduct.bind(this)
     this.addAdditionalDoc = this.addAdditionalDoc.bind(this)
     this.saveDocument = this.saveDocument.bind(this)
+
+    this.handlerChangeSelect = this.handlerChangeSelect.bind(this)
+    this.handlerClickSelect = this.handlerClickSelect.bind(this)
+    this.fetchSelectAPI = this.fetchSelectAPI.bind(this)
   }
 
   handlerChangeInfo(evt) {
@@ -73,28 +85,6 @@ export default class Forms extends React.Component {
 
   }
 
-  // handlerChangeInfoArr(evt) { //Array-field-index // productInfo-productName-0
-  //   const dataName = evt.target.name.split('-')
-    
-  //   // console.log(dataName)
-
-  //   this.setState( (state) => {
-  //     // const cloneProductInfo = Object.assign([], state.productInfo)
-  //     // cloneProductInfo[`${dataName[2]}`][`${dataName[1]}`] = evt.target.value
-  //     // return {productInfo: cloneProductInfo}
-
-  //     if (dataName[0] === 'productInfo') {
-  //       const cloneProductInfo = Object.assign([], state.productInfo)
-  //       cloneProductInfo[`${dataName[2]}`][`${dataName[1]}`] = evt.target.value
-  //       return {productInfo: cloneProductInfo}
-  //     } else if (dataName[0] === 'additionalDoc') {
-  //       const cloneAdditionalDoc = Object.assign([], state.additionalDoc)
-  //       cloneAdditionalDoc[`${dataName[2]}`][`${dataName[1]}`] = evt.target.value
-  //       return {additionalDoc: cloneAdditionalDoc}
-  //     }
-  //   })
-  // }
-
   addProduct() {
     this.setState( (state) => {
       const cloneProductInfo = Object.assign([], state.productInfo)
@@ -104,11 +94,11 @@ export default class Forms extends React.Component {
         productName: '',
         productTarget: '',
         productDescription: '',
-        сount: '',
+        countUM: '',
         spaceCount: '',
         countKg: '',
         invoiceCost: '',
-        invoiceCostSELECT: '',
+        invoiceCostVal: 'none',
         grossWeight: '',
         netWeight: ''
       }
@@ -133,13 +123,40 @@ export default class Forms extends React.Component {
   saveDocument() {
     //console.log(this.state)
     const state = this.state
+
+    const data = {
+      postFull: state.postFull, 
+      declarant: state.declarant,
+      passportSeries: state.passportSeries,
+      passportNumber: state.passportNumber,
+      passportGiveDate: state.passportGiveDate,
+      passportWhoGive: state.passportWhoGive,
+      addressFull: state.addressFull,
+      firmName: state.firmName,
+      firmCountry: state.firmCountry,
+      firmAddress: state.firmAddress,
+      transCost: state.transCost,
+      transCostVal: state.transCostVal,
+      productInfo: state.productInfo, //arr
+      consigmentNumber: state.consigmentNumber,
+      notifyNumber: state.notifyNumber,
+      openAct: state.openAct,
+      invoiceCount: state.invoiceCount,
+      additionalDoc: state.additionalDoc //arr
+    }
+
+    console.log(data)
+
     async function fetchCreatePDF() {
       const res = await fetch('/api/order/create-doc', {
         method: 'post',
         headers: {'Content-Type': 'application/json', 'Authorization': localStorage.getItem('token')},
-        body: JSON.stringify({"data": state, "type": this.props.orderType})
+        body: JSON.stringify({ //временный выкрутас с перечислением свойств state
+          // "data": state,
+          "data": data,
+          "type": this.props.orderType})
       })
-      const result = await res.json()
+      // const result = await res.json()
       if (res.ok) {
         const doc = await fetch('/api/order/get-doc', {
           method: 'get',
@@ -150,23 +167,112 @@ export default class Forms extends React.Component {
 
         const pdfBlob = new Blob([document], {type: 'application/pdf'})
         saveAs(pdfBlob, 'newPdf.pdf')
-
+        //говнокод
       } else {
-        let ers = {}
-        if (res.status === 412) {
-          result.errors.forEach( err => {
-            if (err.param === 'login') ers.login = err.msg
-            if (err.param === 'password') ers.password = err.msg
-          })
-          this.setState({errors: ers})
-        } else {
-          ers.other = result.msg
-          this.setState({errors: ers})
-        }
+        console.log('createPDF save упал!')
       }
     }
 
     fetchCreatePDF.call(this)
+  }
+
+  handlerChangeSelect(evt) {
+    switch(evt.target.name) {
+      case 'address': 
+        this.setState({
+          address: evt.target.value,
+          isAddressChoosen: false
+        })
+        break
+      case 'post':
+        this.setState({
+          post: evt.target.value,
+          isPostChoosen: false
+        })
+        break
+      default: break
+    }
+  } 
+
+  handlerClickSelect(evt) {
+    switch(evt.target.getAttribute('data-name')) {
+      case 'address': 
+        this.setState({
+          address: evt.target.textContent,
+          addressList: [],
+          isAddressChoosen: true,
+          addressFull: this.state.addressFull[evt.target.getAttribute('data-id')]
+        })
+        break
+      case 'post':
+        this.setState({
+          post: evt.target.textContent,
+          postList: [],
+          isPostChoosen: true,
+          postFull: this.state.postFull[evt.target.getAttribute('data-id')]
+        })
+        break
+      default: break
+    }
+  } 
+
+  fetchSelectAPI(selectName) {
+    const state = this.state
+    var url = selectName === 'address' 
+      ? "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address"
+      : "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/fts_unit"
+
+    var token = "19daea13967f8cdef8b5daff3c0e45639e859762"
+
+    var options = {
+        method: "POST",
+        mode: "cors",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "Authorization": "Token " + token
+        },
+        body: JSON.stringify({
+          query: selectName === 'address' ? state.address : state.post,
+          count: 10 //max записей: count
+        }) 
+    }
+
+    fetch(url, options)
+    .then(response => response.json())
+    .then(result => {
+      const tempArr = []
+      for (let suggestion of result.suggestions) {
+        tempArr.push(selectName === 'address' ? suggestion.value : suggestion.unrestricted_value)
+      }
+
+      switch(selectName) {
+        case 'address': 
+          this.setState({
+            addressList: tempArr,
+            addressFull: result.suggestions
+          })
+          break
+        case 'post':
+          this.setState({
+            postList: tempArr,
+            postFull: result.suggestions
+          })
+          break
+        default: break
+      }
+    })
+    .catch(error => console.log("error", error)); //нет проверки на ошибки!
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if ((prevState.address !== this.state.address) && (this.state.isAddressChoosen === false) ) {
+      clearTimeout(timerIdAddress)
+      timerIdAddress = setTimeout(() => this.fetchSelectAPI('address'), 500); 
+    } else if ((prevState.post !== this.state.post) && (this.state.isPostChoosen === false) ) {
+      clearTimeout(timerIdPost)
+      timerIdPost = setTimeout(() => this.fetchSelectAPI('post'), 500); 
+    }
   }
 
   render() {
@@ -243,11 +349,7 @@ export default class Forms extends React.Component {
               <span className='span-sm'>
                 Количество, ед. изм.
               </span>
-              <select className='select-lg'>
-                <option>
-
-                </option>
-              </select>
+              <input className='input-lg' value={state.productInfo[i].countUM} name={`productInfo-countUM-${i}`} onChange={this.handlerChangeInfo}/>
             </div>
 
             <div className='container-sm'>
@@ -273,10 +375,12 @@ export default class Forms extends React.Component {
                 Фактурная стоимость
               </span>
               <input className='input-sm-frst' value={state.productInfo[i].invoiceCost} name={`productInfo-invoiceCost-${i}`} onChange={this.handlerChangeInfo}/>
-              <select className='select-sm'>
-                <option>
-
-                </option>
+              <select className='select-sm' value={state.productInfo[i].invoiceCostVal} name={`productInfo-invoiceCostVal-${i}`} onChange={this.handlerChangeInfo} > 
+                <option value='none' style={{color: '#999'}}>--Валюта--</option>
+                <option value='USD'>USD</option>
+                <option value='EUR'>EUR</option>
+                <option value='CNY'>CNY</option>
+                <option value='RUB'>RUB</option>
               </select>
             </div>
 
@@ -318,6 +422,30 @@ export default class Forms extends React.Component {
       )
     }
 
+    const addressOptions = state.addressList.map( (value, index) => {
+      return <div
+        className='address-item'
+        key={index}
+        data-name='address'
+        onClick={this.handlerClickSelect}
+        data-id={index}
+      >
+        {value}
+      </div>
+    })
+
+    const postOptions = state.postList.map( (value, index) => {
+      return <div
+        className='post-item'
+        key={index}
+        data-name='post'
+        onClick={this.handlerClickSelect}
+        data-id={index}
+      >
+        {value}
+      </div>
+    })
+
     return (
       <div className='forms'>
         <div className='forms__top'>
@@ -325,15 +453,14 @@ export default class Forms extends React.Component {
         </div>
         <div className='forms__wrap'>
 
-          <div className='forms__post container-sm'>
-            <span className='span-sm'>
+          <div className='forms__post'>
+            <div className='container-title'>
               Укажите пост
-            </span>
-            <select className='post__list select-lg'>
-              <option>
-
-              </option>
-            </select>
+            </div>
+            <input className='input-select' value={state.post} name='post' onChange={this.handlerChangeSelect} />
+            <div className={`post-list ${state.postList.length ? 'pl-fill' : 'pl-empty'}`} >
+              {postOptions}  
+            </div>
           </div>
 
           <div className='forms__fullname container-sm'>
@@ -379,38 +506,13 @@ export default class Forms extends React.Component {
             </div>
           </div>
 
-          <div className='forms__reg-adr container-lg'>
+          <div className='forms__address'>
             <div className='container-title'>
               Адрес регистрации
             </div>
-
-            <div className='container-wrap'>
-
-              <div className='container-sm'>
-                <span className='span-sm'>
-                  Индекс
-                </span>
-                <input className='input-lg' value={state.addressIndex} name='addressIndex' onChange={this.handlerChangeInfo} />
-              </div>
-
-              <div className='container-sm'>
-                <span className='span-sm'>
-                  Регион
-                </span>
-                <select className='reg-adr__list select-lg'>
-                  <option>
-
-                  </option>
-                </select>
-              </div>
-
-              <div className='container-sm'>
-                <span className='span-sm'>
-                  Улица, дом, квартира (офис)
-                </span>
-                <textarea className='forms-ta' value={state.addressLocation} name='addressLocation' onChange={this.handlerChangeInfo} />
-              </div>
-
+            <input className='input-select' value={state.address} name='address' onChange={this.handlerChangeSelect} />
+            <div className={`address-list ${state.addressList.length ? 'al-fill' : 'al-empty'}`} >
+              {addressOptions}  
             </div>
           </div>
 
@@ -462,11 +564,13 @@ export default class Forms extends React.Component {
                 </span>
             </span>
             <input className='input-sm-frst' value={state.transCost} name='transCost' onChange={this.handlerChangeInfo} />
-            <select className='select-sm'>
-              <option>
-
-              </option>
-            </select>
+            <select className='select-sm' value={state.transCostVal} name='transCostVal' onChange={this.handlerChangeInfo}> 
+                <option value='none' style={{color: '#999'}}>--Валюта--</option>
+                <option value='USD'>USD</option>
+                <option value='EUR'>EUR</option>
+                <option value='CNY'>CNY</option>
+                <option value='RUB'>RUB</option>
+              </select>
           </div>
 
           {productInfos}

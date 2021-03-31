@@ -91,7 +91,7 @@ export default class Header extends React.Component {
   }
 
   render() {
-    console.log(this.props.selectedPage)
+    // console.log(this.props.selectedPage)
 
     const logRegBtns = (
       <div className='login'>
