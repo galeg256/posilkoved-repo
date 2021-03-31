@@ -31,7 +31,7 @@ export const login = async (req, res) => {
                         const token = jwt.sign({
                             user_id: user.user_id, 
                             user_login: login,
-                        }, keys.jwt, {expiresIn: 60*60})
+                        }, keys.jwt, {expiresIn: 24*60*60})
                         console.log("Выполнен вход: " + login)
                         res.json({
                             result: `Bearer ${token}`, 
