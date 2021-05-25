@@ -3,8 +3,11 @@ import bcrypt from 'bcryptjs'
 import {throwErr} from '../errors/errors.js'
 import jwt from 'jsonwebtoken'
 import {keys} from '../config/keys.js'
-import {validationResult} from 'express-validator'
+import check from 'express-validator'
 import jwt_decode from 'jwt-decode'
+
+const {body, validationResult} = check
+
 
 //ПЕРЕДЕЛАТЬ
 export const getLogin = (req, res) => {

@@ -3,7 +3,7 @@ import pdf from 'html-pdf'
 import path from 'path'
 
 const __dirname = path.resolve()
-const options = { format: 'A4', orientation: 'landscape', type: 'pdf' }
+const options = { format: 'A4', orientation: 'landscape' }
 
 export const createPDF = (req, res) => {
     const type = req.body.type

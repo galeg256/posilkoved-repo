@@ -6,16 +6,12 @@ export default() => {
     body {
         font-family: Tahoma, Verdana, sans-serif;
         font-size: 9.5pt;
-      
         line-height: 1.2;
       }
       
-      .document {
-        width: 297mm;
-      }
-      
       .document__wrap {
-        margin: 18.75mm 16mm 0 19.25mm;
+        width: 1199px;
+        margin: 85px 0 0 109px;
       }
       
       .data-table td{
@@ -24,7 +20,7 @@ export default() => {
       
       .data-table__sp {
         display: inline-block;
-        padding-top: 0.75mm;
+        padding-top: 3px;
       }
       
       .result-table td {
@@ -34,7 +30,7 @@ export default() => {
       }
       
       .result-table {
-        margin-bottom: 3.25mm;
+        margin-bottom: 13px;
       }
       
       .left {
@@ -47,7 +43,7 @@ export default() => {
       
       .prod-cell span {
         display: inline-block;
-        padding: 1mm;
+        padding: 1px;
       }
       
       .declarant {

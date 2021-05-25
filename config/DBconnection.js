@@ -3,8 +3,15 @@ import mysql from 'mysql'
 const db = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "password",
+    password: "9Oqvjgm3",
     database: "posilkoved",
 }) 
+
+// const db = mysql.createConnection({
+//     host: "localhost",
+//     user: "root",
+//     password: "password",
+//     database: "posilkoved",
+// }) 
 
 export default db

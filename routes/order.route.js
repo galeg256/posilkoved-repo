@@ -1,6 +1,6 @@
 import Router from 'express'
 import {createPDF, getPDF} from '../controllers/order.controller.js'
-import {check} from 'express-validator'
+// import {check} from 'express-validator'
 import passport from 'passport'
 
 const router = Router()
