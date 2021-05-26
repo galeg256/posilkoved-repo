@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<!-- <html lang="en"> -->
+<html>
+<head>
+  <meta charset="UTF-8">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Tahoma, Verdana, sans-serif;
+      font-size: 7.5pt;
+      /* width: 297mm; */
+    }
+
+    .wrapper {
+      /* nice */
+      width: 262.5mm;
+      /* nice */
+      margin-left: 18mm;
+      /* nice */
+      margin-top: 15mm;
+      /* margin-right: 20mm; */
+    }
+
+    .tb-info {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 2mm;
+    }
+
+    .tb-info td {
+      /* border: 1px solid #000; */
+    }
+
+    .tb-currency {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 3mm;
+    }
+
+    .tb-currency td {
+      /* border: 1px solid black; */
+    }
+
+    .tb-product {
+      /* width: 100%; */
+      border-collapse: collapse;
+      margin-bottom: 3mm;
+    }
+
+    .tb-product td {
+      border: 1px solid #000;
+    }
+
+    .tb-bottom {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    .tb-bottom td {
+      /* border: 1px solid #000; */
+    }
+
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    
+    <div style="text-align: right;">
+      XПальниковский таможенный постX
+    </div>
+
+    <div style="text-align: center;">
+      <b>Заявление <span style="text-decoration: underline;">10411080/020919</span></b>
+    </div>
+
+    <div style="text-align: center;">
+      Прошу произвести таможенное оформление нижеперечисленного товара в соответствии с Решением Комиссии таможенного союза от 20.05.2010 № 263.
+    </div>
+
+    <div style="text-align: center; margin-bottom: 3mm;">
+      Сообщаю сведения, необходимые для таможенных целей
+    </div>
+
+    <table class="tb-info">
+      <tbody valign="top">
+        <tr>
+          <td style="width: 28mm;"><b>1. Декларант:</b></td>
+          <td style="width: 140mm; text-transform: uppercase;">
+            {{declarant}} XКорекова Мария Анатольевна 618014, Пермский край, Пермь, ул. Елькина, д.49, кв. 44, ПАСРФ №1234 123346 ВЫД. 15.04.2017 УФМС России по Пермскому краю в Осинском р-неX
+          </td>
+          <td rowspan="8" style="padding-left: 12mm;">
+            <div><b>9. Дополнительные сведения:</b></div>
+            <div style="text-transform: uppercase;">XНакладная ЕА176279747СNX</div>
+            <div style="text-transform: uppercase;">Xуведомление таможни 10221030/110819/0004335FX</div>
+            <div style="text-transform: uppercase;">Xакт вскрытия акт 16.08.2019X</div>
+          </td>
+        </tr>
+        <tr>
+          <td><b>2. Отправитель:</b></td>
+          <td style="text-transform: uppercase;">
+            XLorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi veniam soluta, quos aliquid tenetur accusantium sequi. Nobis explicabo error ipsa rerum nulla eius rem vel.X
+          </td>
+        </tr>
+        <tr>
+          <td><b>3. Получатель:</b></td>
+          <td style="text-transform: uppercase;">
+            XКорекова Мария Анатольевна 618014, Пермский край, Пермь, ул. Елькина, д.49, кв. 44, ПАСРФ №1234 123346 ВЫД. 15.04.2017 УФМС России по Пермскому краю в Осинском р-неX
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2"><b>4. Заявляемая таможенная процедура:</b> &nbsp;&nbsp;<span style="text-transform: uppercase;">Xим40X</span></td>
+        </tr>
+        <tr>
+          <td colspan="2"><b>5. Условия поставки:</b> &nbsp;&nbsp;<span style="text-transform: uppercase;">Xdap пермьX</span></td>
+        </tr>
+        <tr>
+          <td colspan="2"><b>6. Стоимость перевозки:</b> &nbsp;&nbsp;<span style="text-transform: uppercase;">X100 usdX</span></td>
+        </tr>
+        <tr>
+          <td colspan="2"><b>7. Паспорт сделки:</b> &nbsp;&nbsp;<span style="text-transform: uppercase;">XX</span></td>
+        </tr>
+        <tr>
+          <td colspan="2"><b>8. Сведения о товаре:</b> &nbsp;&nbsp;<span style="text-transform: uppercase;">XX</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="tb-currency">
+      <tbody valign="top">
+        <tr>
+          <td style="width: 25%;">XКурс валюты на дату 02.09.2019X</td>
+          <td style="width: 25%;">XДоллар США - 66.4897 за 1 USDX</td>
+          <td style="width: 25%;">XЕвро - 73.3847 за 1 EURX</td>
+          <td style="width: 25%;">XЮань - 93.0446 за 10 CHYX</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- razmetka -->
+    <!-- <div style="width: 262.5mm; height: 5mm; margin-bottom: 0.2mm; background-color: #ccc;">
+
+    </div> -->
+
+    <table class="tb-product">
+      <tbody valign="top"> <!-- 262.5 mm-->
+
+        <tr style="text-align: center;">
+          <td rowspan="2" style="width: 12.2mm; max-width: 12.2mm;">№ товара</td>
+          <td rowspan="2" style="width: 32mm; max-width: 32mm;">Наименование</td>
+          <td rowspan="2" style="width: 22mm; max-width: 22mm;">Страна<br>происхождения /<br>назначения</td>
+          <td rowspan="2" style="width: 15mm; max-width: 15mm;">Код по ТН<br>ВЭД ТС</td>
+          <td colspan="3">Количество</td>
+          <td colspan="2">Вес, кг</td>
+          <td rowspan="2" style="width: 16mm; max-width: 16mm;">Фактур.<br>стоим., USD</td>
+          <td rowspan="2" style="width: 16mm; max-width: 16mm;">Тамож.<br>стоим., Руб.</td>
+          <td rowspan="2" style="width: 14mm; max-width: 14mm;">Статист.<br>Стоим.,<br>долл США</td>
+          <td rowspan="2" style="width: 14mm; max-width: 14mm;">Ставка<br>тамож.<br>пошлины</td>
+          <td rowspan="2" style="width: 13mm; max-width: 13mm;">Тамож.<br>пошлина,<br>руб.</td>
+          <td rowspan="2" style="width: 13mm; max-width: 13mm;">НДС, руб.</td>
+          <td rowspan="2" style="width: 17.5mm; max-width: 17.5mm;">Тамож. Сборы<br>за тамож.<br>Оформл., руб</td>
+        </tr>
+
+        <tr style="text-align: center;">
+          <td style="width: 13mm; max-width: 13mm;">Груз.<br>мест</td>
+          <td style="width: 13mm; max-width: 13mm;">в осн. ед.<br>изм. кг</td>
+          <td style="width: 13mm; max-width: 13mm;">в доп. ед.<br>изм.</td>
+          <td style="width: 13mm; max-width: 13mm;">брутто</td>
+          <td style="width: 13mm; max-width: 13mm;">нетто</td>
+        </tr>
+
+        <tr>
+          <td style="width: 12.2mm; max-width: 12.2mm;">X1X</td>
+          <!-- <td style="width: 32mm; max-width: 32mm;">X2X</td> -->
+          <td style="width: 32mm; max-width: 32mm;">XОДНОРАЗОВЫЕ КАРТРИДЖИ НА 12 ИГЛ ДЛЯ АППАРАТА DERMA PEN СТЕРИЛЬНЫЙ СМЕННЫЙ КАРТРИДЖ ДЛЯ ФРАКЦИОННОГО АППАРАТА DERMAPEN YYR, ZGTS, MESODERM И ДРУГИХ. 12 СТАЛЬНЫХ ИГЛ. 32G, ДЛИНА КОТОРЫХ РЕГУЛИРУЕТСЯ ОТ 0.25 ДО 3.0 ММ. ИСПОЛЬЗУЕТСЯ ПРИ ПРОЦЕДУРЕ ФРАКЦИОННОЙ МЕЗОТЕРАПИИ. МАТЕРИАЛ ИГЛ - МЕДИЦИНСКАЯ СТАЛЬ. ЗАТОЧКА - АКУПУНКТУРНАЯ. ДЛИНА ИГЛ - 0.25 - 3 ММ. КОРПУС КАРТРИДЖА - ПЛАСТИК. 1200X</td>
+          <td style="width: 22mm; max-width: 22mm;">X3X</td>
+          <td style="width: 15mm; max-width: 15mm;">X4X</td>
+          <td style="width: 13mm; max-width: 13mm; text-align: right;">X5X</td>
+          <td style="width: 13mm; max-width: 13mm; text-align: right;">X6X</td>
+          <td style="width: 13mm; max-width: 13mm; text-align: right;">X7X</td>
+          <td style="width: 13mm; max-width: 13mm; text-align: right;">X8X</td>
+          <td style="width: 13mm; max-width: 13mm; text-align: right;">X9X</td>
+          <td style="width: 16mm; max-width: 16mm; text-align: right;">X10X</td>
+          <td style="width: 16mm; max-width: 16mm; text-align: right;">X11X</td>
+          <td style="width: 14mm; max-width: 14mm; text-align: right;">X12X</td>
+          <td style="width: 14mm; max-width: 14mm; text-align: right;">X13X</td>
+          <td style="width: 13mm; max-width: 13mm; text-align: right;">X14X</td>
+          <td style="width: 13mm; max-width: 13mm; text-align: right;">X15X</td>
+          <td style="width: 17.5mm; max-width: 17.5mm; text-align: right;">X16X</td>
+        </tr>
+
+        <!-- безразмерные info ячейки -->
+        <!-- <tr>
+          <td>X1X</td> -->
+          <!-- <td>X2X</td> -->
+          <!-- <td>XОДНОРАЗОВЫЕ КАРТРИДЖИ НА 12 ИГЛ ДЛЯ АППАРАТА DERMA PEN СТЕРИЛЬНЫЙ СМЕННЫЙ КАРТРИДЖ ДЛЯ ФРАКЦИОННОГО АППАРАТА DERMAPEN YYR, ZGTS, MESODERM И ДРУГИХ. 12 СТАЛЬНЫХ ИГЛ. 32G, ДЛИНА КОТОРЫХ РЕГУЛИРУЕТСЯ ОТ 0.25 ДО 3.0 ММ. ИСПОЛЬЗУЕТСЯ ПРИ ПРОЦЕДУРЕ ФРАКЦИОННОЙ МЕЗОТЕРАПИИ. МАТЕРИАЛ ИГЛ - МЕДИЦИНСКАЯ СТАЛЬ. ЗАТОЧКА - АКУПУНКТУРНАЯ. ДЛИНА ИГЛ - 0.25 - 3 ММ. КОРПУС КАРТРИДЖА - ПЛАСТИК. 1200X</td> -->
+          <!-- <td style="width: 25mm; max-width: 25mm;">XОДНОРАЗОВЫЕ КАРТРИДЖИ НА 12 ИГЛ ДЛЯ АППАРАТА DERMA PEN СТЕРИЛЬНЫЙ СМЕННЫЙ КАРТРИДЖ ДЛЯ ФРАКЦИОННОГО АППАРАТА DERMAPEN YYR, ZGTS, MESODERM И ДРУГИХ. 12 СТАЛЬНЫХ ИГЛ. 32G, ДЛИНА КОТОРЫХ РЕГУЛИРУЕТСЯ ОТ 0.25 ДО 3.0 ММ. ИСПОЛЬЗУЕТСЯ ПРИ ПРОЦЕДУРЕ ФРАКЦИОННОЙ МЕЗОТЕРАПИИ. МАТЕРИАЛ ИГЛ - МЕДИЦИНСКАЯ СТАЛЬ. ЗАТОЧКА - АКУПУНКТУРНАЯ. ДЛИНА ИГЛ - 0.25 - 3 ММ. КОРПУС КАРТРИДЖА - ПЛАСТИК. 1200X</td> -->
+          <!-- <td>X3X</td>
+          <td>X4X</td>
+          <td>X5X</td>
+          <td>X6X</td>
+          <td>X7X</td>
+          <td>X8X</td>
+          <td>X9X</td>
+          <td>X10X</td>
+          <td>X11X</td>
+          <td>X12X</td>
+          <td>X13X</td>
+          <td>X14X</td>
+          <td>X15X</td>
+          <td>X16X</td>
+        </tr> -->
+
+        <tr>
+          <td colspan="4"><b>Итого:</b></td>
+          <td style="text-align: right;">X1X</td>
+          <td style="text-align: right;">X2X</td>
+          <td style="text-align: right;">X3X</td>
+          <td style="text-align: right;">X4X</td>
+          <td style="text-align: right;">X5X</td>
+          <td style="text-align: right;">X6X</td>
+          <td style="text-align: right;">X7X</td>
+          <td style="text-align: right;">X8X</td>
+          <td style="text-align: right;">X9X</td>
+          <td style="text-align: right;">X10X</td>
+          <td style="text-align: right;">X11X</td>
+          <td style="text-align: right;">X12X</td>
+        </tr>
+
+      </tbody>
+    </table>
+
+    <table class="tb-bottom">
+      <tbody valign="top">
+        <tr>
+          <td style="width: 50%; text-align: right; padding-right: 1mm;"><b>Декларант:</b></td>
+          <td style="width: 50%;">
+            <div style="text-transform: uppercase;">ХИовенко Василий СергеевичХ</div>
+            <div style="text-transform: uppercase;">ХПаспорт гражданина РФ Серия 5717 №634986Х</div>
+            <div style="text-transform: uppercase;">ХВыдан отделом УФМС России по Пермскому краю в Дзержинском р-не г.Перми 29.09.2017Х</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- <div><b>1. Декларант:</b></div>
+    <div style="text-align: right;">пост</div>
+    <div style="background: #ccc;">asdasdasdasd</div> -->
+
+  </div>
+</body>
+</html>

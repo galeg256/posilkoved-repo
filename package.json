@@ -7,13 +7,14 @@
     "express": "^4.17.1",
     "express-validator": "^6.9.2",
     "file-saver": "^2.0.5",
-    "html-pdf": "^2.2.0",
+    "handlebars": "^4.7.7",
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^3.1.2",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.7",
     "passport": "^0.4.1",
-    "passport-jwt": "^4.0.0"
+    "passport-jwt": "^4.0.0",
+    "puppeteer": "^9.1.1"
   },
   "name": "posilkoved-repo",
   "description": "",
