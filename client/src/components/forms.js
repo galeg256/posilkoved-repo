@@ -123,84 +123,84 @@ export default class Forms extends React.Component {
   saveDocument() {
     //console.log(this.state)
     //start razcomment here \>
-    // const state = this.state
-
-    // const data = {
-    //   postFull: state.postFull, 
-    //   declarant: state.declarant,
-    //   passportSeries: state.passportSeries,
-    //   passportNumber: state.passportNumber,
-    //   passportGiveDate: state.passportGiveDate,
-    //   passportWhoGive: state.passportWhoGive,
-    //   addressFull: state.addressFull,
-    //   firmName: state.firmName,
-    //   firmCountry: state.firmCountry,
-    //   firmAddress: state.firmAddress,
-    //   transCost: state.transCost,
-    //   transCostVal: state.transCostVal,
-    //   productInfo: state.productInfo, //arr
-    //   consigmentNumber: state.consigmentNumber,
-    //   notifyNumber: state.notifyNumber,
-    //   openAct: state.openAct,
-    //   invoiceCount: state.invoiceCount,
-    //   additionalDoc: state.additionalDoc //arr
-    // }
+    const state = this.state
 
     const data = {
-      // postFull: 'Пальниковский таможенный пост',
-      // postFull.data.code: '10411080',
+      postFull: state.postFull, 
+      declarant: state.declarant,
+      passportSeries: state.passportSeries,
+      passportNumber: state.passportNumber,
+      passportGiveDate: state.passportGiveDate,
+      passportWhoGive: state.passportWhoGive,
+      addressFull: state.addressFull,
+      firmName: state.firmName,
+      firmCountry: state.firmCountry,
+      firmAddress: state.firmAddress,
+      transCost: state.transCost,
+      transCostVal: state.transCostVal,
+      productInfo: state.productInfo, //arr
+      consigmentNumber: state.consigmentNumber,
+      notifyNumber: state.notifyNumber,
+      openAct: state.openAct,
+      invoiceCount: state.invoiceCount,
+      additionalDoc: state.additionalDoc //arr
+    }
 
-      postFull: {
-        unrestricted_value: 'Пальниковский таможенный пост',
-        data: {code: '10411080'}
-      },
+    // const data = {
+    //   // postFull: 'Пальниковский таможенный пост',
+    //   // postFull.data.code: '10411080',
 
-      declarant: 'Галкин Егор Геннадьевич',
-      passportSeries: '5711',
-      passportNumber: '123654',
-      passportGiveDate: '29.09.2017',
-      passportWhoGive: 'отделом УФМС России по пермскому краю в дзержинском р-не г.Перми',
-      addressFull: {
-        unrestricted_value: '614016, Пермский край, г Пермь, ул Елькина, д 49, кв 44'
-      },
-      firmName: 'Shenzen Legend Beauty Equipment CO., LTD.',
-      firmCountry: 'Китай',
-      firmAddress: 'CN, Guandong, Shenzhen, Room 1207, Deqinchuang building, NO. 28, Bulong Road, Buji st., Longgang district',
-      transCost: '100',
-      transCostVal: 'EUR',
-      // productInfo: [], //arr,
-      productInfo: [
-        {
-          codeTNVD: '', //only for form1000
-          stakeTP: '', //only for form1000
-          productName: 'Moloko',
-          productTarget: 'V Rot',
-          productDescription: 'beloe',
-          countUM: '10 кг',
-          spaceCount: '5',
-          countKg: '10',
-          invoiceCost: '25,5',
-          invoiceCostVal: 'EUR',
-          grossWeight: '1',
-          netWeight: '0,8'
-        },
-        {
-          r: ''
-        }
-      ],
-      consigmentNumber: 'EA176279747CN',
-      notifyNumber: '10221030/110819/0004335F',
-      openAct: '16.08.2019',
-      invoiceCount: 'LG148120190725TC',
-      // additionalDoc: [], //arr
-      additionalDoc: [
-        { document: 'Какой-то доп. документ №1' },
-        { document: 'Какой-то доп. документ №2' },
-        { document: 'Какой-то доп. документ №3' },
-      ],
-    } 
+    //   postFull: {
+    //     unrestricted_value: 'Пальниковский таможенный пост',
+    //     data: {code: '10411080'}
+    //   },
 
-    console.log(data)
+    //   declarant: 'Галкин Егор Геннадьевич',
+    //   passportSeries: '5711',
+    //   passportNumber: '123654',
+    //   passportGiveDate: '29.09.2017',
+    //   passportWhoGive: 'отделом УФМС России по пермскому краю в дзержинском р-не г.Перми',
+    //   addressFull: {
+    //     unrestricted_value: '614016, Пермский край, г Пермь, ул Елькина, д 49, кв 44'
+    //   },
+    //   firmName: 'Shenzen Legend Beauty Equipment CO., LTD.',
+    //   firmCountry: 'Китай',
+    //   firmAddress: 'CN, Guandong, Shenzhen, Room 1207, Deqinchuang building, NO. 28, Bulong Road, Buji st., Longgang district',
+    //   transCost: '100',
+    //   transCostVal: 'EUR',
+    //   // productInfo: [], //arr,
+    //   productInfo: [
+    //     {
+    //       codeTNVD: '', //only for form1000
+    //       stakeTP: '', //only for form1000
+    //       productName: 'Moloko',
+    //       productTarget: 'V Rot',
+    //       productDescription: 'beloe',
+    //       countUM: '10 кг',
+    //       spaceCount: '5',
+    //       countKg: '10',
+    //       invoiceCost: '25,5',
+    //       invoiceCostVal: 'EUR',
+    //       grossWeight: '1',
+    //       netWeight: '0,8'
+    //     },
+    //     {
+    //       r: ''
+    //     }
+    //   ],
+    //   consigmentNumber: 'EA176279747CN',
+    //   notifyNumber: '10221030/110819/0004335F',
+    //   openAct: '16.08.2019',
+    //   invoiceCount: 'LG148120190725TC',
+    //   // additionalDoc: [], //arr
+    //   additionalDoc: [
+    //     { document: 'Какой-то доп. документ №1' },
+    //     { document: 'Какой-то доп. документ №2' },
+    //     { document: 'Какой-то доп. документ №3' },
+    //   ],
+    // } 
+
+    // console.log(data)
 
     async function fetchCreatePDF() {
       const res = await fetch('/api/order/create-doc', {
