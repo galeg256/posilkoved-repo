@@ -68,11 +68,12 @@
   <div class="wrapper">
     
     <div style="text-align: right;">
-      XПальниковский таможенный постX
+      <!-- XПальниковский таможенный постX -->
+      {{postFull.unrestricted_value}}
     </div>
 
     <div style="text-align: center;">
-      <b>Заявление <span style="text-decoration: underline;">10411080/020919</span></b>
+      <b>Заявление <span style="text-decoration: underline;">{{postFull.data.code}}/{{date}}</span></b>
     </div>
 
     <div style="text-align: center;">
@@ -88,41 +89,45 @@
         <tr>
           <td style="width: 28mm;"><b>1. Декларант:</b></td>
           <td style="width: 140mm; text-transform: uppercase;">
-            {{declarant}} XКорекова Мария Анатольевна 618014, Пермский край, Пермь, ул. Елькина, д.49, кв. 44, ПАСРФ №1234 123346 ВЫД. 15.04.2017 УФМС России по Пермскому краю в Осинском р-неX
+            {{declarant}}, {{addressFull.unrestricted_value}}, ПАСРФ №{{passportSeries}} {{passportNumber}} ВЫД. {{passportGiveDate}} {{passportWhoGive}}
           </td>
           <td rowspan="8" style="padding-left: 12mm;">
             <div><b>9. Дополнительные сведения:</b></div>
-            <div style="text-transform: uppercase;">XНакладная ЕА176279747СNX</div>
-            <div style="text-transform: uppercase;">Xуведомление таможни 10221030/110819/0004335FX</div>
-            <div style="text-transform: uppercase;">Xакт вскрытия акт 16.08.2019X</div>
+            {{#if consigmentNumber}}<div style="text-transform: uppercase;">Накладная {{consigmentNumber}}</div>{{/if}}
+            {{#if notifyNumber}}<div style="text-transform: uppercase;">уведомление таможни {{notifyNumber}}</div>{{/if}}
+            {{#if openAct}}<div style="text-transform: uppercase;">акт вскрытия {{openAct}}</div>{{/if}}
+            {{#if invoiceCount}}<div style="text-transform: uppercase;">Инвойс-счет {{invoiceCount}}</div>{{/if}}
+            {{#each additionalDoc}}
+              {{#if this.document}}<div style="text-transform: uppercase;">{{this.document}}</div>{{/if}}
+            {{/each}}
           </td>
         </tr>
         <tr>
           <td><b>2. Отправитель:</b></td>
           <td style="text-transform: uppercase;">
-            XLorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi veniam soluta, quos aliquid tenetur accusantium sequi. Nobis explicabo error ipsa rerum nulla eius rem vel.X
+            {{firmName}}, {{firmCountry}}, {{firmAddress}}
           </td>
         </tr>
         <tr>
           <td><b>3. Получатель:</b></td>
           <td style="text-transform: uppercase;">
-            XКорекова Мария Анатольевна 618014, Пермский край, Пермь, ул. Елькина, д.49, кв. 44, ПАСРФ №1234 123346 ВЫД. 15.04.2017 УФМС России по Пермскому краю в Осинском р-неX
+            {{declarant}},{{addressFull.unrestricted_value}}, ПАСРФ №{{passportSeries}} {{passportNumber}} ВЫД. {{passportGiveDate}} {{passportWhoGive}}
           </td>
         </tr>
         <tr>
-          <td colspan="2"><b>4. Заявляемая таможенная процедура:</b> &nbsp;&nbsp;<span style="text-transform: uppercase;">Xим40X</span></td>
+          <td colspan="2"><b>4. Заявляемая таможенная процедура:</b> &nbsp;&nbsp;<span style="text-transform: uppercase;">ИМ40</span></td>
         </tr>
         <tr>
-          <td colspan="2"><b>5. Условия поставки:</b> &nbsp;&nbsp;<span style="text-transform: uppercase;">Xdap пермьX</span></td>
+          <td colspan="2"><b>5. Условия поставки:</b> &nbsp;&nbsp;<span style="text-transform: uppercase;">X???X</span></td>
         </tr>
         <tr>
-          <td colspan="2"><b>6. Стоимость перевозки:</b> &nbsp;&nbsp;<span style="text-transform: uppercase;">X100 usdX</span></td>
+          <td colspan="2"><b>6. Стоимость перевозки:</b> &nbsp;&nbsp;<span style="text-transform: uppercase;">{{transCost}} {{transCostVal}}</span></td>
         </tr>
         <tr>
-          <td colspan="2"><b>7. Паспорт сделки:</b> &nbsp;&nbsp;<span style="text-transform: uppercase;">XX</span></td>
+          <td colspan="2"><b>7. Паспорт сделки:</b> &nbsp;&nbsp;<span style="text-transform: uppercase;">X???X</span></td>
         </tr>
         <tr>
-          <td colspan="2"><b>8. Сведения о товаре:</b> &nbsp;&nbsp;<span style="text-transform: uppercase;">XX</span></td>
+          <td colspan="2"><b>8. Сведения о товаре:</b> &nbsp;&nbsp;<span style="text-transform: uppercase;">X???X</span></td>
         </tr>
       </tbody>
     </table>
@@ -130,18 +135,13 @@
     <table class="tb-currency">
       <tbody valign="top">
         <tr>
-          <td style="width: 25%;">XКурс валюты на дату 02.09.2019X</td>
-          <td style="width: 25%;">XДоллар США - 66.4897 за 1 USDX</td>
-          <td style="width: 25%;">XЕвро - 73.3847 за 1 EURX</td>
-          <td style="width: 25%;">XЮань - 93.0446 за 10 CHYX</td>
+          <td style="width: 25%;">Курс валюты на дату {{pointedDate}}</td>
+          <td style="width: 25%;">XДоллар США - 66.4897 за 1 USD(API)X</td>
+          <td style="width: 25%;">XЕвро - 73.3847 за 1 EUR(API)X</td>
+          <td style="width: 25%;">XЮань - 93.0446 за 10 CHY(API)X</td>
         </tr>
       </tbody>
     </table>
-
-    <!-- razmetka -->
-    <!-- <div style="width: 262.5mm; height: 5mm; margin-bottom: 0.2mm; background-color: #ccc;">
-
-    </div> -->
 
     <table class="tb-product">
       <tbody valign="top"> <!-- 262.5 mm-->
@@ -153,7 +153,7 @@
           <td rowspan="2" style="width: 15mm; max-width: 15mm;">Код по ТН<br>ВЭД ТС</td>
           <td colspan="3">Количество</td>
           <td colspan="2">Вес, кг</td>
-          <td rowspan="2" style="width: 16mm; max-width: 16mm;">Фактур.<br>стоим., USD</td>
+          <td rowspan="2" style="width: 16mm; max-width: 16mm;">Фактур.<br>стоим., {{transCostVal}}</td>
           <td rowspan="2" style="width: 16mm; max-width: 16mm;">Тамож.<br>стоим., Руб.</td>
           <td rowspan="2" style="width: 14mm; max-width: 14mm;">Статист.<br>Стоим.,<br>долл США</td>
           <td rowspan="2" style="width: 14mm; max-width: 14mm;">Ставка<br>тамож.<br>пошлины</td>
@@ -170,9 +170,31 @@
           <td style="width: 13mm; max-width: 13mm;">нетто</td>
         </tr>
 
-        <tr>
+        {{#each productInfo}}
+          <tr>
+            <td style="width: 12.2mm; max-width: 12.2mm;">{{this.position}}</td>
+            <td style="width: 32mm; max-width: 32mm;">{{this.productName}}, {{this.productTarget}}, {{productDescription}}, {{countUM}}</td>
+            <!-- <td style="width: 32mm; max-width: 32mm;">XОДНОРАЗОВЫЕ КАРТРИДЖИ НА 12 ИГЛ ДЛЯ АППАРАТА DERMA PEN СТЕРИЛЬНЫЙ СМЕННЫЙ КАРТРИДЖ ДЛЯ ФРАКЦИОННОГО АППАРАТА DERMAPEN YYR, ZGTS, MESODERM И ДРУГИХ. 12 СТАЛЬНЫХ ИГЛ. 32G, ДЛИНА КОТОРЫХ РЕГУЛИРУЕТСЯ ОТ 0.25 ДО 3.0 ММ. ИСПОЛЬЗУЕТСЯ ПРИ ПРОЦЕДУРЕ ФРАКЦИОННОЙ МЕЗОТЕРАПИИ. МАТЕРИАЛ ИГЛ - МЕДИЦИНСКАЯ СТАЛЬ. ЗАТОЧКА - АКУПУНКТУРНАЯ. ДЛИНА ИГЛ - 0.25 - 3 ММ. КОРПУС КАРТРИДЖА - ПЛАСТИК. 1200X</td> -->
+            <td style="width: 22mm; max-width: 22mm;">{{this.country}}</td>
+            <td style="width: 15mm; max-width: 15mm;">X4X</td>
+            <td style="width: 13mm; max-width: 13mm; text-align: right;">{{spaceCount}}</td>
+            <td style="width: 13mm; max-width: 13mm; text-align: right;">{{countKg}}</td>
+            <td style="width: 13mm; max-width: 13mm; text-align: right;"></td>
+            <td style="width: 13mm; max-width: 13mm; text-align: right;">{{grossWeight}}</td>
+            <td style="width: 13mm; max-width: 13mm; text-align: right;">{{netWeight}}</td>
+            <td style="width: 16mm; max-width: 16mm; text-align: right;">{{invoiceCost}}->rub->usd</td>
+            <td style="width: 16mm; max-width: 16mm; text-align: right;">(fact st + st perevozki)->rub</td>
+            <td style="width: 14mm; max-width: 14mm; text-align: right;">tam st(rub) -> usd</td>
+            <td style="width: 14mm; max-width: 14mm; text-align: right;">X13X</td>
+            <td style="width: 13mm; max-width: 13mm; text-align: right;">X14X</td>
+            <td style="width: 13mm; max-width: 13mm; text-align: right;">X15X</td>
+            <td style="width: 17.5mm; max-width: 17.5mm; text-align: right;">X16X</td>
+          </tr>
+        {{/each}}
+
+        <!-- original -->
+        <!-- <tr>
           <td style="width: 12.2mm; max-width: 12.2mm;">X1X</td>
-          <!-- <td style="width: 32mm; max-width: 32mm;">X2X</td> -->
           <td style="width: 32mm; max-width: 32mm;">XОДНОРАЗОВЫЕ КАРТРИДЖИ НА 12 ИГЛ ДЛЯ АППАРАТА DERMA PEN СТЕРИЛЬНЫЙ СМЕННЫЙ КАРТРИДЖ ДЛЯ ФРАКЦИОННОГО АППАРАТА DERMAPEN YYR, ZGTS, MESODERM И ДРУГИХ. 12 СТАЛЬНЫХ ИГЛ. 32G, ДЛИНА КОТОРЫХ РЕГУЛИРУЕТСЯ ОТ 0.25 ДО 3.0 ММ. ИСПОЛЬЗУЕТСЯ ПРИ ПРОЦЕДУРЕ ФРАКЦИОННОЙ МЕЗОТЕРАПИИ. МАТЕРИАЛ ИГЛ - МЕДИЦИНСКАЯ СТАЛЬ. ЗАТОЧКА - АКУПУНКТУРНАЯ. ДЛИНА ИГЛ - 0.25 - 3 ММ. КОРПУС КАРТРИДЖА - ПЛАСТИК. 1200X</td>
           <td style="width: 22mm; max-width: 22mm;">X3X</td>
           <td style="width: 15mm; max-width: 15mm;">X4X</td>
@@ -188,28 +210,6 @@
           <td style="width: 13mm; max-width: 13mm; text-align: right;">X14X</td>
           <td style="width: 13mm; max-width: 13mm; text-align: right;">X15X</td>
           <td style="width: 17.5mm; max-width: 17.5mm; text-align: right;">X16X</td>
-        </tr>
-
-        <!-- безразмерные info ячейки -->
-        <!-- <tr>
-          <td>X1X</td> -->
-          <!-- <td>X2X</td> -->
-          <!-- <td>XОДНОРАЗОВЫЕ КАРТРИДЖИ НА 12 ИГЛ ДЛЯ АППАРАТА DERMA PEN СТЕРИЛЬНЫЙ СМЕННЫЙ КАРТРИДЖ ДЛЯ ФРАКЦИОННОГО АППАРАТА DERMAPEN YYR, ZGTS, MESODERM И ДРУГИХ. 12 СТАЛЬНЫХ ИГЛ. 32G, ДЛИНА КОТОРЫХ РЕГУЛИРУЕТСЯ ОТ 0.25 ДО 3.0 ММ. ИСПОЛЬЗУЕТСЯ ПРИ ПРОЦЕДУРЕ ФРАКЦИОННОЙ МЕЗОТЕРАПИИ. МАТЕРИАЛ ИГЛ - МЕДИЦИНСКАЯ СТАЛЬ. ЗАТОЧКА - АКУПУНКТУРНАЯ. ДЛИНА ИГЛ - 0.25 - 3 ММ. КОРПУС КАРТРИДЖА - ПЛАСТИК. 1200X</td> -->
-          <!-- <td style="width: 25mm; max-width: 25mm;">XОДНОРАЗОВЫЕ КАРТРИДЖИ НА 12 ИГЛ ДЛЯ АППАРАТА DERMA PEN СТЕРИЛЬНЫЙ СМЕННЫЙ КАРТРИДЖ ДЛЯ ФРАКЦИОННОГО АППАРАТА DERMAPEN YYR, ZGTS, MESODERM И ДРУГИХ. 12 СТАЛЬНЫХ ИГЛ. 32G, ДЛИНА КОТОРЫХ РЕГУЛИРУЕТСЯ ОТ 0.25 ДО 3.0 ММ. ИСПОЛЬЗУЕТСЯ ПРИ ПРОЦЕДУРЕ ФРАКЦИОННОЙ МЕЗОТЕРАПИИ. МАТЕРИАЛ ИГЛ - МЕДИЦИНСКАЯ СТАЛЬ. ЗАТОЧКА - АКУПУНКТУРНАЯ. ДЛИНА ИГЛ - 0.25 - 3 ММ. КОРПУС КАРТРИДЖА - ПЛАСТИК. 1200X</td> -->
-          <!-- <td>X3X</td>
-          <td>X4X</td>
-          <td>X5X</td>
-          <td>X6X</td>
-          <td>X7X</td>
-          <td>X8X</td>
-          <td>X9X</td>
-          <td>X10X</td>
-          <td>X11X</td>
-          <td>X12X</td>
-          <td>X13X</td>
-          <td>X14X</td>
-          <td>X15X</td>
-          <td>X16X</td>
         </tr> -->
 
         <tr>
@@ -236,16 +236,13 @@
         <tr>
           <td style="width: 50%; text-align: right; padding-right: 1mm;"><b>Декларант:</b></td>
           <td style="width: 50%;">
-            <div style="text-transform: uppercase;">ХИовенко Василий СергеевичХ</div>
-            <div style="text-transform: uppercase;">ХПаспорт гражданина РФ Серия 5717 №634986Х</div>
-            <div style="text-transform: uppercase;">ХВыдан отделом УФМС России по Пермскому краю в Дзержинском р-не г.Перми 29.09.2017Х</div>
+            <div style="text-transform: uppercase;">{{declarant}}</div>
+            <div style="text-transform: uppercase;">Паспорт гражданина РФ Серия {{passportSeries}} №{{passportNumber}}</div>
+            <div style="text-transform: uppercase;">Выдан {{passportWhoGive}} {{passportGiveDate}}</div>
           </td>
         </tr>
       </tbody>
     </table>
-    <!-- <div><b>1. Декларант:</b></div>
-    <div style="text-align: right;">пост</div>
-    <div style="background: #ccc;">asdasdasdasd</div> -->
 
   </div>
 </body>
